@@ -1,21 +1,13 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { AxiosResponse } from 'axios';
 import { IEmployee } from '../../types/employee';
 import { fetchEmployeesSuccess, fetchEmployeesFailure } from '../actions/employee-actions';
 import { employeeActionTypes } from '../action-types/employee-action-types';
 import getEmployees from '../../services/api/employees/getEmployees';
 
-export interface ResponseGenerator {
-  config?: any;
-  data?: any;
-  headers?: any;
-  request?: any;
-  status?: number;
-  statusText?: string;
-}
-
 function* fetchEmployeesSaga() {
   try {
-    const response: ResponseGenerator = yield call(getEmployees);
+    const response: AxiosResponse<IEmployee[]> = yield call(getEmployees);
     yield put(
       fetchEmployeesSuccess({
         employees: response.data
