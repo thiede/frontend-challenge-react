@@ -18,7 +18,7 @@ You will also see any lint errors in the console.
 
 Launches the mock api server.
 
-### yarn start:all
+### `yarn start:all`
 
 Start api server and frontend app in the development mode.
 
