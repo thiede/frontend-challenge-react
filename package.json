@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:api": "yarn json-server --watch api-server/db.json --port 3001",
-    "start:all": "yarn start:api && yarn start"
+    "start:all": "yarn start:api & yarn start"
   },
   "eslintConfig": {
     "extends": [
