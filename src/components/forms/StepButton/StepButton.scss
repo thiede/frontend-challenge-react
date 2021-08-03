@@ -1,0 +1,75 @@
+@import "./src/styles/colors";
+
+.step-button, .step-button:hover {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: $black;
+  cursor: pointer;
+  margin: 0 1px;
+  padding: 10px 10px 10px 30px;
+  min-width: 60px;
+  float: left;
+  position: relative;
+  background-color: $blue;
+  user-select: none;
+  transition: background-color 0.2s ease;
+
+  &:after, &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: -17px;
+    width: 0;
+    height: 0;
+    border-top: 19px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 17px solid $blue;
+    z-index: 2;
+    transition: border-color 0.2s ease;
+  }
+
+  &:before {
+    right: auto;
+    left: 0;
+    border-left: 17px solid $grey;
+    z-index: 0;
+  }
+
+  &:first-child:before {
+    border: none;
+  }
+
+  &:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  & > span {
+    position: relative;
+  }
+}
+
+.step-button:hover {
+  background-color: $blue-hover;
+
+  &:after, &:before {
+    border-left-color: $blue-hover;
+  }
+
+  &:before {
+    border-left-color: $grey;
+  }
+}
+
+.step-button--active {
+  background-color: $blue-active;
+
+  &:after, &:before {
+    border-left-color: $blue-active;
+  }
+
+  &:before {
+    border-left-color: $grey;
+  }
+}

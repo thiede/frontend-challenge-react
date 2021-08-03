@@ -1,21 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.scss';
+import React, { SyntheticEvent, useEffect, useState } from 'react';
+import { getEmployees, updateEmployee } from './services/api/employees';
+import EmployeesListing from './views/Employees/EmployeesListing/EmployeesListing';
+import { IEmployee } from './types/employee';
 
-function App() {
+const App = () => {
+  const [employees, setEmployees] = useState<IEmployee[]>([]);
+
+  useEffect(() => {
+    getEmployees()
+      .then((data) => setEmployees(data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  const handleClick = (id: number) => (status: number) => (evt: SyntheticEvent) => {
+    updateEmployee(id, status)
+      .then(() => getEmployees())
+      .then((data) => setEmployees(data))
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+      <h1>Frontend Challenge</h1>
+      <EmployeesListing employees={employees} handleClick={handleClick} />
     </div>
   );
-}
+};
 
 export default App;
