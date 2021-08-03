@@ -1,0 +1,19 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "status": 1
+    },
+    {
+      "id": 2,
+      "name": "Eleonora Pink",
+      "status": 3
+    },
+    {
+      "id": 3,
+      "name": "David White",
+      "status": 3
+    }
+  ]
+}

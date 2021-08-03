@@ -20,7 +20,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:api": "yarn json-server --watch api-server/db.json --port 3001",
+    "start:all": "yarn start:api && yarn start"
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "json-server": "^0.16.3",
     "node-sass": "^6.0.1",
     "prettier": "^2.3.2",
     "sass-loader": "^12.1.0"
