@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent, useMemo } from 'react';
+import { FC, SyntheticEvent } from 'react';
 import './StepControl.scss';
 import { StepButton } from '../../forms';
 
@@ -7,19 +7,15 @@ type StepControlProps = {
   stepsNumber: number;
   handleClick: (status: number) => (evt: SyntheticEvent) => void;
 };
-const StepControl: FC<StepControlProps> = ({ currentStep, stepsNumber, handleClick }) => {
-  const steps = useMemo(() => Array.from(Array(stepsNumber).keys()), [stepsNumber]);
 
+const steps = ['added', 'in-check', 'approved', 'active', 'inactive'];
+
+const StepControl: FC<StepControlProps> = ({ currentStep, stepsNumber, handleClick }) => {
   return (
     <div className="step-control">
       <div className="arrow-steps clearfix">
-        {steps.map((stepNumber, index) => (
-          <StepButton
-            key={index}
-            label={stepNumber.toString()}
-            active={currentStep === stepNumber}
-            handleClick={handleClick(stepNumber)}
-          />
+        {steps.map((stepName, index) => (
+          <StepButton key={index} label={stepName} active={currentStep === index} handleClick={handleClick(index)} />
         ))}
       </div>
     </div>
