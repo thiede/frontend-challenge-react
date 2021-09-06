@@ -5,13 +5,14 @@ type EmployeeItemProps = {
   name: string;
   status: number;
   handleClick: (status: number) => (evt: SyntheticEvent) => void;
+  employeeId: number;
 };
 
-const EmployeeItem: FC<EmployeeItemProps> = ({ name, status, handleClick }) => {
+const EmployeeItem: FC<EmployeeItemProps> = ({ name, status, handleClick, employeeId }) => {
   return (
     <div>
       <h2>{name}</h2>
-      <StepControl currentStep={status} stepsNumber={5} handleClick={handleClick} />
+      <StepControl currentStep={status} stepsNumber={5} handleClick={handleClick} employeeId={employeeId} />
     </div>
   );
 };

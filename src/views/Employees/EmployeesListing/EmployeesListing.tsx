@@ -17,6 +17,7 @@ const EmployeesListing: FC<EmployeesListingProps> = ({ employees, handleClick })
             name={employee.name}
             status={employee.status}
             handleClick={handleClick(employee.id)}
+            employeeId={employee.id}
           />
         );
       })}
